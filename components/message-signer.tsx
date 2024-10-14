@@ -5,7 +5,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { useSignMessage } from 'wagmi';
 
-export const MessageSigner: React.FC = () => {
+export const MessageSigner = () => {
   const [message, setMessage] = useState('');
   const { signMessage, status } = useSignMessage();
 
