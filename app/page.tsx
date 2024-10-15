@@ -24,7 +24,7 @@ const TokenInterface: React.FC = () => {
         <div className='space-y-8 w-full max-w-4xl'>
           <ChainSwitcher />
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-            <MessageSigner />
+          <MessageSigner setSignature={setSignature} />
             <TypedDataSigner setSignature={setSignature} />
           </div>
           <MessageVerifier signature={signature} />
