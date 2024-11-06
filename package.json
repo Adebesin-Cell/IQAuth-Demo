@@ -9,7 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@everipedia/iq-login": "^3.5.0",
+		"@everipedia/iq-login": "^5.0.0",
 		"@radix-ui/react-icons": "^1.3.0",
 		"@radix-ui/react-slot": "^1.1.0",
 		"@tanstack/react-query": "^5.56.0",
