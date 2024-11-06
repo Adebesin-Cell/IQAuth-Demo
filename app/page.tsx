@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useAccount } from 'wagmi';
 
 const TokenInterface: React.FC = () => {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const [signature, setSignature] = useState('');
 
   return (
@@ -18,13 +18,13 @@ const TokenInterface: React.FC = () => {
       <h1 className='text-3xl font-bold mb-8 text-center'>
         Token Management Interface
       </h1>
-      {!isConnected ? (
+      {!isConnected || !address ? (
         <Login />
       ) : (
         <div className='space-y-8 w-full max-w-4xl'>
           <ChainSwitcher />
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-          <MessageSigner setSignature={setSignature} />
+            <MessageSigner setSignature={setSignature} />
             <TypedDataSigner setSignature={setSignature} />
           </div>
           <MessageVerifier signature={signature} />
