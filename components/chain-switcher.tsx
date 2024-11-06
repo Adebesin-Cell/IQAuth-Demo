@@ -1,11 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type React from 'react';
-import { useAccount, useSwitchChain } from 'wagmi';
+import { useAccount, useDisconnect, useSwitchChain } from 'wagmi';
 
 export const ChainSwitcher: React.FC = () => {
   const { chain } = useAccount();
   const { chains, error, isPending, switchChain } = useSwitchChain();
+  const { disconnect } = useDisconnect();
 
   return (
     <Card>
@@ -27,6 +28,9 @@ export const ChainSwitcher: React.FC = () => {
               </Button>
             ))}
           </div>
+          <Button onClick={() => disconnect()} variant='destructive'>
+            Disconnect
+          </Button>
           {error && <p className='text-red-500'>{error.message}</p>}
         </div>
       </CardContent>
