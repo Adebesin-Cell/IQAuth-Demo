@@ -1,5 +1,6 @@
 'use client';
 
+import { iqTestnet } from '@everipedia/iq-login';
 import { IqLoginProvider } from '@everipedia/iq-login/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { polygon } from 'viem/chains';
@@ -23,9 +24,12 @@ export default function ClientProviders({
     throw new Error('Missing NEXT_PUBLIC_WEB3_AUTH_CLIENT_ID');
   }
 
+  const chain =
+    process.env.NEXT_PUBLIC_IS_PRODUCTION === 'true' ? polygon : iqTestnet;
+
   return (
     <IqLoginProvider
-      chain={polygon}
+      chain={chain}
       walletConnectProjectId={NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID}
       web3AuthProjectId={NEXT_PUBLIC_WEB3_AUTH_CLIENT_ID}
     >
